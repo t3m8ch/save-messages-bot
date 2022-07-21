@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  app:
+    image: t3m8ch/savemessagesbot:0.0.1
+    environment:
+      DB_URL: mongodb://mongo:27017/messagesDB
+      BOT_TOKEN: 5360409165:AAHoTqFMuxZupUTm9A9wA8oVpv8pmTnQdSk
+      BOT_USERNAME: t3m8ch_jvmfun_bot
+      BOT_CREATOR_ID: 256847449
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:5-focal
+    volumes:
+      - mongo:/etc/mongo
+
+volumes:
+  mongo:
